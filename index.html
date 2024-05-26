@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NodeMCU Control</title>
+</head>
+<body>
+  <h1>Control 7-Segment Display</h1>
+  <form id="controlForm">
+    <label for="digit">Enter Digit (0-9, A, C):</label>
+    <input type="text" id="digit" name="digit" maxlength="1" required>
+    <button type="submit">Send</button>
+  </form>
+
+  <script>
+    document.getElementById('controlForm').addEventListener('submit', function(event) {
+      event.preventDefault();
+      const digit = document.getElementById('digit').value;
+      fetch(`http://your-nodemcu-ip-address/update?digit=${digit}`)
+        .then(response => response.text())
+        .then(data => alert(data))
+        .catch(error => alert('Error: ' + error));
+    });
+  </script>
+</body>
+</html>

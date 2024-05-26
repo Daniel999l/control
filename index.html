@@ -17,7 +17,7 @@
     document.getElementById('controlForm').addEventListener('submit', function(event) {
       event.preventDefault();
       const digit = document.getElementById('digit').value;
-      fetch(`http://your-nodemcu-ip-address/update?digit=${digit}`)
+      fetch(`http://192.168.130.249/update?digit=${digit}`)
         .then(response => response.text())
         .then(data => alert(data))
         .catch(error => alert('Error: ' + error));
